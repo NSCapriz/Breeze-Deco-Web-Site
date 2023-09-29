@@ -1,44 +1,65 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
 <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-<section class="my-4">
-    <div class=" container__bienvenida row justify-content-center align-items-center ">
+<section class="my-4 px-2">
+    <div class="container__bienvenida row justify-content-center align-items-center ">
         <div class="col-md">
-            <h1 class="text-center fw-bold mt-5"> Bienvenidos a Brezee Deco</h1>
-            <p class="text-center fw-bolder mt-4">¡Aveturate a conocer nuestro mundo de diseño de interiores!</p>
-            <p class="text-center">Transformá tus espacios con elegancia y estilo...</p>
-            <p class="text-center mb-5">Creá el estilo perfecto para hacer de tu hogar un lugar confortable.</p>
+            <h1 class="text-center  mt-5 text-white"> Bienvenidos a Brezee Deco</h1>
+            <p class="text-center  mt-4 text-white">¡Aveturate a conocer nuestro mundo de diseño de interiores!</p>
+            <p class="text-center text-white">Transformá tus espacios con elegancia y estilo...</p>
+            <p class="text-center mb-5 fw-bolder text-white">Creá el estilo perfecto para hacer de tu hogar un lugar confortable.</p>
         </div>
     </div>
 </section>
-<section class="my-4">
-    <div class="row justify-content-center align-items-center container__registrarse">
-        <div class="col-md">
-            <h2 class="text-center fw-bold mt-5">Te invitamos que formes parte de nosotros</h2>
-            <p class="text-center fw-semibold mt-4">¡Dimos inicio a este viaje, para ayudarte a trasnformar tus espacios en obras maestras!</p>
+<section class="my-4 px-5 container__registro">
+    <div class="row justify-content-center align-items-center py-5">
+        <div class="col-md-7 my-3 mx-2 border border-black rounded">
+            <p class="text-center fw-semibold mt-3">¡Dimos inicio a este viaje, para ayudarte a trasnformar tus espacios en obras maestras!</p>
             <p class="text-center">Nuestro emprendimiento de decoración de interiores sigue creciendo gracias a tu apoyo. Cada día buscamos expandir nuestra selección de productos para hacer tus espacios aún más hermosos.</p>
-            <p class="text-center mb-5">¡Gracias por querer ser parte de nuestro éxito!</p>
-            <a href="" class="text-center"><button class="btn btn-warning text-white fw-semibold mb-3">Registrate</button></a>
+            <p class="text-center mb-5">¡Acompañanos en este camino y hace tu hogar un lugar único!</p>
+        </div>
+        <div class="col-md-4 my-3 mx-2 border border-black rounded">
+            <h2 class="text-center fw-bold mt-3">Te invitamos que formes parte de nosotros...</h2>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-4">
+                    <a href="{% url 'registro' %}" class="text-center"><button class="btn btn-warning text-white fw-semibold my-3">Registrase</button></a>
+                </div>
+            </div>
+            <p class="text-center">¡Gracias por querer ser parte de nuestro éxito!</p>
         </div>
     </div>
 </section>
-<section class="my-4">
-    <div class="row justify-content-center align-items-center container__nosotros">
-        <div class="col-md">
-            <h2 class="text-center fw-bold mt-5">¿Querés saber más sobre nosotros?</h2>
-            <p class="text-center fw-semibold mt-4">¡Dimos inicio a este viaje, para ayudarte a trasnformar tus espacios en obras maestras!</p>
-            <p class="text-center">Nuestro emprendimiento de decoración de interiores sigue creciendo gracias a tu apoyo. Cada día buscamos expandir nuestra selección de productos para hacer tus espacios aún más hermosos.</p>
-            <p class="text-center fw-bold mb-5">¡Encuentra tu estilo y sueña en grande!</p>
-            <a href="" class="text-center"><button class="btn btn-warning text-white fw-semibold mb-3">Conocé más</button></a>
+<section class="my-4 px-5">
+    <div class="row justify-content-center align-items-center py-5">
+        <div class="col-md-4 my-3 mx-2 border border-black rounded">
+            <h2 class="text-center fw-bold m-3">¿Querés saber más sobre nosotros?</h2>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-4">
+                    <a href="{% url 'nosotros' %}" class="text-center"><button class="btn btn-warning text-white fw-semibold my-3">Conocé más</button></a>
+                </div>
+            </div>
+            <p class="text-center">¡Encontra tu estilo y soñá en grande!</p>
+        </div>
+        <div class="col-md-7 my-3 mx-2 border border-black rounded container__nosotros">
+            <p class="text-center fw-semibold mt-3 text-white "> !Cada día buscamos expandir nuestra creatividad para ayudarte convertir espacios en lugares visualmente hermosos!</p>
+            <p class="text-center text-white ">Sabemos que tu hogar es más que cuatro paredes; es el reflejo de tu estilo, tus pasiones y tus sueños. Por eso buscamos, ofrecerte los mejores productos de decoración y brindarte ideas para que puedas ponerlos en el lugar de tu casa que más te guste.</p>
+            <p class="text-center text-white ">Nuestra mayor recompensa es verte sonreír cuando ves el resultado final.</p>
         </div>
     </div>
 </section>
-<section class="my-4">
-    <div class="row justify-content-center align-items-center container__productos">
-        <div class="col-md">
-            <h2 class="text-center fw-bold mt-5">Te invitamos a ver nuestros productos</h2>
-            <p class="text-center fw-semibold mt-4">Cada rincón es una oportunidad para crear belleza. Explora nuestra variedad de productos y da vida a tus sueños de diseño</p>
-            <p class="text-center">Descubre un mundo de posibilidades en nuestro emprendimiento de decoración de interiores.</p>
-            <a href="" class="text-center"><button class="btn btn-warning text-white fw-semibold mb-3">Ver</button></a>
+<section class="my-4 px-5">
+    <div class="row justify-content-center align-items-center container__productos py-5">
+        <div class="col-md-7 my-3 mx-2 border border-black rounded">
+            <p class="text-center fw-semibold mt-4">¡Cada rincón es una oportunidad para crear belleza. Explora nuestra variedad de productos y da vida a tus sueños!</p>
+            <p class="text-center">Trabajamos con los mejores materiales y proveedores para garantizar que tu inversión en decoración perdure con el tiempo. Ya sea que desees un ambiente moderno, clásico, rústico o cualquier otro estilo, tenemos lo que necesitas para que puedas hacerlo realidad.</p>
+        </div>
+        <div class="col-md-4 my-3 mx-2 border border-black rounded">
+            <h2 class="text-center fw-bold mt-3">Te invitamos a ver nuestros productos...</h2>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-3"
+                    ><a href="{% url 'productos' %}" class="text-center"><button class="btn btn-warning text-white fw-semibold mb-3">Ver</button></a></div
+                >
+            </div>
+            <p class="text-center">¡Descubrí un mundo de posibilidades para tu hogar!</p>
         </div>
     </div>
 </section>

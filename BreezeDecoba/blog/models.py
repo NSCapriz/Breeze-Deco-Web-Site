@@ -6,21 +6,14 @@ class Client(models.Model):
     lastname = models.CharField(max_length=20)
     email = models.EmailField()
     age = models.DateField()
-    image = models.ImageField()
-    password = models.CharField(max_length=10)
     
     def __str__(self) -> str:
         return f"{self.name} {self.lastname}"
-
-class Login(Client, models.Model):
-    email = models.EmailField
-    password = models.CharField(max_length=10)
     
 class Product(models.Model):
     name_product = models.CharField(max_length=20)
-    description = models.TextField()
+    description = models.CharField(max_length=100)
     price = models.IntegerField()
-    image = models.ImageField()
     
     def __str__(self) -> str:
         return f"{self.name_product} - $ {self.price}"
@@ -28,19 +21,12 @@ class Product(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=20)
     subcategory = models.CharField(max_length=20)
-    product = models.CharField(max_length=20)
+    product = models.CharField(max_length=50)
     
     def __str__(self) -> str:
         return f"{self.category}, {self.subcategory}, {self.product}"
     
 class Contacto(models.Model):
-    options = [
-        [0, "Consulta"],
-        [1, "Reclamo"],
-        [2, "Sugerencia"],
-    ]
     user_name = models.CharField(max_length=40)
     email = models.EmailField()
-    consult = models.IntegerField(choices=options)
-    message = models.TextField()
-    notice = models.BooleanField()
+    consult = models.CharField(max_length=200)
