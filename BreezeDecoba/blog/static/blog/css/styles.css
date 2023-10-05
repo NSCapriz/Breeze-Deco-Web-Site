@@ -389,7 +389,8 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;
+-webkit-appearance: button;
+appearance: button;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -448,6 +449,7 @@ legend + * {
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 /* rtl:raw:
@@ -469,6 +471,7 @@ legend + * {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 output {
@@ -11271,7 +11274,6 @@ body {
 .container__bienvenida{
   background:  linear-gradient(rgba(21, 27, 41, 0.75), rgba(5,7,12,0.35)), url("../assets/img/jpeg.webp"), no-repeat;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -11282,11 +11284,30 @@ body {
 .container__nosotros{
   background: linear-gradient(rgba(7, 10, 17, 0.25), rgba(7, 11, 19, 0.75)), url("../assets/img/habitacion.jfif"), no-repeat;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
 .container__productos{
   border-top: solid black 1px;
   border-bottom: solid black 1px;
+}
+
+.container__principal--nosotros{
+  background:  linear-gradient(rgba(21, 27, 41, 0.65), rgba(5,7,12,0.65)), url("../assets/img/foto-living.jpg"), no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container__contacto{
+  background: linear-gradient(rgba(7, 10, 17, 0.75), rgba(7, 11, 19, 0.75)), url("../assets/img/ciudad.jpg"), no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container__titulo{
+  background: linear-gradient(rgba(7, 10, 17, 0.75), rgba(7, 11, 19, 0.75));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

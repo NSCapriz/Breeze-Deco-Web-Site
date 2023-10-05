@@ -1,115 +1,273 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<div class="container-fluid mt-5">
-    <div class="row">
-        <div class="col-lg-8">
-            <!-- Post content-->
-            <article>
-                <!-- Post header-->
-                <header class="mb-4">
-                    <!-- Post title-->
-                    <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
-                    <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
-                    <!-- Post categories-->
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
-                </header>
-                <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
-                <!-- Post content-->
-                <section class="mb-5">
-                    <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                    <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                    <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                    <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-                    <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                    <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
-                </section>
-            </article>
-            <!-- Comments section-->
-            <section class="mb-5">
-                <div class="card bg-light">
+<div class="container-fluid">
+    <section class="my-5">
+        <h1 class="text-center fst-italic pt-3 text-white container__titulo py-5 rounded mb-5">~ Nuestros Productos ~</h1>
+        <div class="row justify-content-center align-items-center px-5">
+            <div class="col-md-5 border border-black rounded">
+                <h2 class="text-center fs-5 pt-3">En estes espacio podrás encontrar todos nuestros productos por categorias</h2>
+                <p class="text-center pt-3">En <strong>Breeze Deco</strong>, creemos en la magia de los detalles. Sabemos que tu hogar es un lienzo en blanco esperando ser transformado en una obra de arte que refleje tu estilo único. Nuestra colección de productos de decoración de interiores está diseñada para inspirarte, empoderarte y ayudarte a crear un espacio que amarás</p>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center fst-italic fs-5">¿Necesitar buscar algo?</h2>
+                    </div>
                     <div class="card-body">
-                        <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-                        <!-- Comment with nested comments-->
-                        <div class="d-flex mb-4">
-                            <!-- Parent comment-->
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                <!-- Child comment 1-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                    </div>
-                                </div>
-                                <!-- Child comment 2-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        When you put money directly to a problem, it makes a good headline.
-                                    </div>
-                                </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="row justify-content-center align-items-center text-center">
+                                <!--VER SI NO AFECTA PYTHON-->
+                                {{productoForm.as_div}}
+                                <input type="submit" value="Enviar" class="btn btn-success my-3" />
                             </div>
-                        </div>
-                        <!-- Single comment-->
-                        <div class="d-flex">
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-            </section>
-        </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Side widget-->
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
             </div>
         </div>
-    </div>
+    </section>
+    <section>
+        <div>
+            <h2 class="text-center border-bottom border-black py-5 mb-5">Productos por Categorias</h2>
+        </div>
+        <h2 class="text-center">~ Perfumeria ~</h2>
+        <p class="text-center mt-2 mb-5 fst-italic">Difusores & fragancias</p>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/repuesto-difusor.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Repuesto de Difusor</h3>
+                        <p class="card-text">300ml en Aromas: Bali, Manhattan ,Circe, Pearl, Diamond y Amic. Presentados con varillas de rattan </p>
+                        <p class="fw-semibolder">$ 4100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/difusor-vidrio-mate.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Difusor de Vidrio</h3>
+                        <p class="card-text">Capacidad: 460cc / Colores: Blanco mate, Aqua mate, Rose nude brillante, Rose, Verde petróleo. </p>
+                        <p class="fw-semibolder">$ 4300</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/spray-textil.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Spray Textil</h3>
+                        <p class="card-text">400 ml - Aroma Bali, Manhattan,Circe, Pearl, Diamond y Amic </p>
+                        <p class="fw-semibolder">$ 4300</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center text-center">
+            <div class="col-md-4 px-5 my-3">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/bandeja.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Bandeja Good Vibes</h3>
+                        <p class="card-text">Bandeja de madera paraíso (17 cm de largo x 10 cm de ancho)</p>
+                        <p class="fw-semibolder">$ 3400</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/velas-soja.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Vela de Soja</h3>
+                        <p class="card-text">Aromas: Bali, Manhattan,Circe, Pearl, Diamond y Amic </p>
+                        <p class="fw-semibolder">$ 3900</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/flor-difusora.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Flor Difusora</h3>
+                        <p class="card-text">Confeccionada en género liviano absorbente - varios colores </p>
+                        <p class="fw-semibolder">$ 2100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5">
+        <h2 class="text-center  border-top pt-3 border-black">~ Baño ~</h2>
+        <p class="text-center mt-2 mb-5 fst-italic">Bath, Body & Relax</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/sal-de-baño.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Sales de Baño</h3>
+                        <p class="card-text">Fragancias: Coco-Vainilla /Flowers Bouquet/ Green tea -lemon</p>
+                        <p class="fw-semibolder">$ 3000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/jabones-barra.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Jabones en Barra</h3>
+                        <p class="card-text">Fragancias: Vainilla, Verbena, Magnolia&Vainilla, Limón, Coco</p>
+                        <p class="fw-semibolder">$ 990</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/almohadilla.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Almohadilla Terapeutica</h3>
+                        <p class="card-text">Almohadilla 30x15cm Con semillas ,lavanda, manzanilla y eucalipto</p>
+                        <p class="fw-semibolder">$ 2600</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5">
+        <h2 class="text-center border-top pt-3 border-black">~ Textil ~</h2>
+        <p class="text-center mt-2 mb-5 fst-italic">Mantas & Almohadones</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/manta-bruma.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Manta Bruma</h3>
+                        <p class="card-text">Colores: aqua/beige/verde/gris acero/rosa/ azul/avellana</p>
+                        <p class="fw-semibolder">$ 9000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/manta-wild.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Manta Wild</h3>
+                        <p class="card-text">Colores: aqua/verde/ gris/rosa/arena</p>
+                        <p class="fw-semibolder">$ 9000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/manta-spring.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Manta Sprind</h3>
+                        <p class="card-text">Manta tejida blanco tiza 100%algodón - 1,60x1,20</p>
+                        <p class="fw-semibolder">$ 14000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/almohadon-frase-rectangular.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Almohadon Rectangular con Frase</h3>
+                        <p class="card-text">30x60 (funda y relleno) </p>
+                        <p class="fw-semibolder">$ 4000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/almohadon-tusor.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Almohadon de Tusor</h3>
+                        <p class="card-text">40x40 (funda y almohadón) Colores: verde seco, Avellana, Gris claro, Azul acero, Arena</p>
+                        <p class="fw-semibolder">$ 4000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/almohadon-frase-cuadrado.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Almohadon Cuadrado con Frase</h3>
+                        <p class="card-text">40x40 (funda y relleno)</p>
+                        <p class="fw-semibolder">$ 4000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5">
+        <h2 class="text-center border-top pt-3 border-black">~ Accesorios ~</h2>
+        <p class="text-center mt-2 mb-5 fst-italic">Hogar</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/tazas.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Tazón Nórdico</h3>
+                        <p class="card-text">Material: Cerámica - Colores: Nude, verde, gris, negro</p>
+                        <p class="fw-semibolder">$ 5200</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/individuales.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Individuales</h3>
+                        <p class="card-text">4 unidades</p>
+                        <p class="fw-semibolder">$ 5000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/cestos.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Cestos de Tela</h3>
+                        <p class="card-text">Confeccionados en tusor - modelos: HOME CORAZON</p>
+                        <p class="fw-semibolder">$ 1800</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/alfombra.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Alfombra</h3>
+                        <p class="card-text">Confeccionadas en algodón. Colores: Crudo liso, Rayada (0.90x060)</p>
+                        <p class="fw-semibolder">$ 6000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/manteles.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Manteles</h3>
+                        <p class="card-text">Confeccionados en tusor - 2 unidades</p>
+                        <p class="fw-semibolder">$ 8000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-5 my-3 text-center">
+                <div class="card">
+                    <img src="{% static 'blog/assets/img/apagador-vela.jpg' %}" class="img-fluid px-5 pt-5" alt="..." />
+                    <div class="card-body">
+                        <h3 class="card-title fs-5">Apagador de Velas</h3>
+                        <p class="card-text">Candle snuffer de metal para apagar tus velas y evitar que se ensucien</p>
+                        <p class="fw-semibolder">$ 1000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-<script src="js/scripts.js"></script>
 {% endblock main %}
