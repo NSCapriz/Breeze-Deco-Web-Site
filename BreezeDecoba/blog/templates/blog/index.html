@@ -1,6 +1,7 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
 <div class="container-fluid">
     <section class="my-4 px-2">
+        <h1 class="my-5 text-bg-success text-center  fst-italic fs-5 ">{{mensaje}} {% csrf_token %}</h1>
         <div class="container__bienvenida row justify-content-center align-items-center ">
             <div class="col-md">
                 <h1 class="text-center  mt-5 text-white"> Bienvenidos a Brezee Deco</h1>

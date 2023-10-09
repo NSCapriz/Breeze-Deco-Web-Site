@@ -1,0 +1,14 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<section class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-5">
+            <h1 class="text-center text-bg-danger my-5 py-5 fst-italic"> Has cerrado tu sesión. </h1>
+            <p class="text-center fw-bolder my-4 py-4 ">¿Quieres volver a iniciar sesión?</p>
+            <p class="text-center fst-italic  my-3 py-3 ">Has click en el siguiente botón.</p>
+            <div class="d-flex justify-content-center my-5 py-4 ">
+                <a href="{% url 'login' %}"><button class="btn btn-success">Iniciar sesión nuevamente</button></a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

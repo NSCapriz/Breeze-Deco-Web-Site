@@ -15,8 +15,10 @@
                                     {% csrf_token %}
                                     <div class="table-responsive">
                                         <!--VER SI NO AFECTA PYTHON-->
-                                        <table class="table table-hover align-middle"> {{myForm.as_table}} </table>
-                                        <input type="submit" value="Enviar" class="btn btn-warning" />
+                                        <table class="table table-hover align-middle"> {{registerForm.as_table}} </table>
+                                        <div class="d-flex justify-content-center">
+                                            <input type="submit" value="Enviar" class="btn btn-warning" />
+                                        </div>
                                     </div>
                                 </form>
                             </div>
