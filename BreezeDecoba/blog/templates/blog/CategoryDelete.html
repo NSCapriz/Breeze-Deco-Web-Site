@@ -1,0 +1,7 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<form action="" method="POST">
+    {% csrf_token %} ¿Estas seguro que deseas borrar la categoría / producto porpuesto por un cliente : "{{ object.category }} / {{ object.product }}"?
+    <input type="submit" value="Borrar" />
+</form>
+<a href="{% url 'CategoryList' %}">No deseo borrarlo</a>
+{% endblock main %}

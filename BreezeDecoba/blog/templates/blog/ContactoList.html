@@ -1,0 +1,16 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>LISTA DE CONSULTAS REALIZADAS POR CLIENTES:</h1>
+<ul>
+    {% for consulta in object_list %}
+    <li>
+        <p>Consulta realizada por cliente: {{consulta.consult}} ---- Realizada por: {{consulta.user_name}}, su email de contacto: {{consulta.email}}</p>
+        <p>
+            <a href="{% url 'ContactoDetails' consulta.id %}" class="mx-2">Ver</a>
+            <a href="{% url 'ContactoEdit' consulta.id %}" class="me-2">Editar</a>
+            <a href="{% url 'ContactoDelete' consulta.id %}">Borrar</a>
+        </p>
+    </li>
+    {% endfor %}
+    <a href="{% url 'ContactoNew' %}"><button class="btn  btn-success ">Agregar nueva consulta</button></a>
+</ul>
+{% endblock main %}

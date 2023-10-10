@@ -1,0 +1,16 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>LISTA DE SUSCRIPCIÓN DE CLIENTES PARA NOVEDADES</h1>
+<ul>
+    {% for cliente in object_list %}
+    <li>
+        <p>Cliente: {{ cliente.name}} {{ cliente.lastname}}</p>
+        <p>
+            <a href="{% url 'ClientDetails' cliente.id %}" class="mx-2">Ver</a>
+            <a href="{% url 'ClienteEdit' cliente.id %}" class="me-2">Editar</a>
+            <a href="{% url 'ClientDelete' cliente.id %}">Borrar</a>
+        </p>
+    </li>
+    {% endfor %}
+    <a href="{% url 'ClienteNew' %}"><button class="btn  btn-success ">Agregar Cliente</button></a>
+</ul>
+{% endblock main %}

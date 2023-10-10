@@ -1,0 +1,13 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1> Esta es la consulta realizada por el Cliente:</h1>
+<p>Consulta: <i>{{object.consult}}</i></p>
+<p>Cliente que la realiza: <i>{{object.user_name}}</i></p>
+<p>Email para contactarlo: <i>{{object.email}}</i></p>
+<a href="{% url 'ContactoList' %}">Regresar</a>
+
+<h2>Si necesitas modificar algun dato de la categoria propuesta por cliente hazlo en el siguiente formulario:</h2>
+<form action="" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Enviar" />
+</form>
+{% endblock main %}

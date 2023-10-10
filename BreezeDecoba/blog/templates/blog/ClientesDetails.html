@@ -1,0 +1,9 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>Detalles del Cliente:</h1>
+
+<p>Nombre del cliente: <i>{{ object.name}}</i></p>
+<p>Apellido: <i>{{object.lastname}}</i></p>
+<p>Email: <i>{{object.email}}</i></p>
+<p>Email: <i>{{object.age}}</i></p>
+<a href="{% url 'ClientList' %}">Regresar</a>
+{% endblock main %}

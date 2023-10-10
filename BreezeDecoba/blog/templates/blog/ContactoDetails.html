@@ -1,0 +1,8 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>Detalles de la consulta seleccionada:</h1>
+
+<p>Consulta: <i>{{object.consult}}</i></p>
+<p>Realizada por: <i>{{object.user_name}}</i></p>
+<p>Email de contacto: <i>{{object.email}}</i></p>
+<a href="{% url 'ContactoList' %}">Regresar</a>
+{% endblock main %}

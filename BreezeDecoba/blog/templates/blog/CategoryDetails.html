@@ -1,0 +1,8 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>Detalles de la categoria seleccionada:</h1>
+
+<p>Nombre de la categoria propuesta por el cliente: <i>{{object.category}}</i></p>
+<p>Subcategoria o tipo: <i>{{object.subcategory}}</i></p>
+<p>Producto propuesto: <i>{{object.product}}</i></p>
+<a href="{% url 'CategoryList' %}">Regresar</a>
+{% endblock main %}

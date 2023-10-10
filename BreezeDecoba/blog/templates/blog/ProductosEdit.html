@@ -1,0 +1,13 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1> Estos son los datos actuales del Producto:</h1>
+<p>Nombre del Producto: <i>{{object.name_product}}</i></p>
+<p>Descripción: <i>{{object.description}}</i></p>
+<p>Precio: <i>{{object.price}}</i></p>
+<a href="{% url 'ProductList' %}">Regresar</a>
+
+<h2>Si necesitas modificar algun dato del producto hazlo en el siguiente formulario:</h2>
+<form action="" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Enviar" />
+</form>
+{% endblock main %}

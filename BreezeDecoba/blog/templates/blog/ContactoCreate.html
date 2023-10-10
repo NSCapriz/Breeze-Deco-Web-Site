@@ -1,0 +1,7 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>Si deseas agregar alguna consulta para verla a futuro, hazlo desde el siguiente formulario:</h1>
+<form action="" method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <input type="submit" value="Enviar" />
+</form>
+{% endblock main %}

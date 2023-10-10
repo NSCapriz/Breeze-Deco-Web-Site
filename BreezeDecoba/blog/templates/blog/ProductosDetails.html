@@ -1,0 +1,7 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>Detalles del Producto:</h1>
+<p>Nombre del Producto: <i>{{object.name_product}}</i></p>
+<p>Descripción: <i>{{object.description}}</i></p>
+<p>Precio: <i>{{object.price}}</i></p>
+<a href="{% url 'ProductList' %}">Regresar</a>
+{% endblock main %}

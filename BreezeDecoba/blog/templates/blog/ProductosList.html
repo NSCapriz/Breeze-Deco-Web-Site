@@ -1,0 +1,16 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>LISTA DE PRODUCTOS:</h1>
+<ul>
+    {% for producto in object_list %}
+    <li>
+        <p>Producto: {{producto.name_product}} / {{producto.price}}</p>
+        <p>
+            <a href="{% url 'ProductDetails' producto.id %}" class="mx-2">Ver</a>
+            <a href="{% url 'ProductEdit' producto.id %}" class="me-2">Editar</a>
+            <a href="{% url 'ProductDelete' producto.id %}">Borrar</a>
+        </p>
+    </li>
+    {% endfor %}
+    <a href="{% url 'ProductNew' %}"><button class="btn  btn-success ">Agregar nuevo producto</button></a>
+</ul>
+{% endblock main %}

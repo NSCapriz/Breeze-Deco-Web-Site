@@ -1,0 +1,16 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1>LISTA DE CATEGORIAS PROPUESTAS POR CLIENTES:</h1>
+<ul>
+    {% for categoria in object_list %}
+    <li>
+        <p>Categoria propuesta por cliente: {{categoria.category}} / {{categoria.product}}</p>
+        <p>
+            <a href="{% url 'CategoryDetails' categoria.id %}" class="mx-2">Ver</a>
+            <a href="{% url 'CategoryEdit' categoria.id %}" class="me-2">Editar</a>
+            <a href="{% url 'CategoryDelete' categoria.id %}">Borrar</a>
+        </p>
+    </li>
+    {% endfor %}
+    <a href="{% url 'CategoryNew' %}"><button class="btn  btn-success ">Agregar nueva categoria</button></a>
+</ul>
+{% endblock main %}

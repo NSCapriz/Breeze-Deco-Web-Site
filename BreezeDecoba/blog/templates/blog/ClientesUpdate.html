@@ -1,0 +1,14 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<h1> Estos son los datos actuales del Cliente:</h1>
+<p>Nombre del cliente: <i>{{object.name}}</i></p>
+<p>Apellido: <i>{{object.lastname}}</i></p>
+<p>Email: <i>{{object.email}}</i></p>
+<p>Edad: <i>{{object.age}}</i></p>
+<a href="{% url 'ClientList' %}">Regresar</a>
+
+<h2>Si necesitas modificar algun dato del cliente hazlo en el siguiente formulario:</h2>
+<form action="" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <input type="submit" value="Enviar" />
+</form>
+{% endblock main %}

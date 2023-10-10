@@ -1,0 +1,7 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<form action="" method="POST">
+    {% csrf_token %} ¿Estas seguro que deseas borrar este producto: "{{object.name_product}}"?
+    <input type="submit" value="Borrar" />
+</form>
+<a href="{% url 'ProductList' %}">No deseo borrarlo</a>
+{% endblock main %}
