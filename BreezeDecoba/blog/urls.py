@@ -52,3 +52,8 @@ urlpatterns += [
     path("contacto/edit/<int:pk>", views.ContactoUpdateView.as_view(), name="ContactoEdit"),
     path("contacto/delete/<int:pk>",views.ContactoDeleteView.as_view(),name="ContactoDelete",),
 ]
+
+#URL Perfiles de Usuario
+urlpatterns += [
+    path('editarPerfil', views.editarPerfil, name="EditarPerfil"),     
+]

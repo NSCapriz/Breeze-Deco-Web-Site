@@ -6,7 +6,7 @@ from blog.forms import ClientForm, ProductForm, CategoryForm, ContactoForm, Busq
 # Login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from blog.forms import UserRegisterForm
+from blog.forms import UserRegisterForm, UserEditForm
 from django.contrib.auth.decorators import login_required
 
 #CBV
@@ -222,3 +222,34 @@ class ContactoDeleteView(DeleteView):
     model = Contacto
     success_url = reverse_lazy("ContactoList")
     template_name = "blog/ContactoDelete.html"
+    
+#Edición Perfil User
+
+@login_required
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditForm(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.last_name = informacion['last_name']
+            usuario.first_name = informacion['first_name']
+
+            usuario.save()
+
+            return render(request, "blog/inicio.html")
+
+    else:
+
+        miFormulario = UserEditForm(initial={'email': usuario.email})
+
+    return render(request, "blog/usersProfile.html", {"miFormulario": miFormulario, "usuario": usuario})
