@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from blog.models import Client, Product, Category, Contacto
+from blog.models import Client, Product, Category, Contacto, Avatar
 from blog.forms import ClientForm, ProductForm, CategoryForm, ContactoForm, BusquedaProductForm
 
 # Login
@@ -17,8 +17,10 @@ from django.urls import reverse_lazy
 
 
 # Create your views here.
+
 def inicio(request):
-    return render(request, "blog/index.html")
+    #avatares = Avatar.objects.filter(user=request.user.id)[0]
+    return render(request, "blog/index.html")#,{"url": avatares}
 
 def nosotros(request):
     if request.method == 'POST':
@@ -196,7 +198,7 @@ class CategoryDeleteView(DeleteView):
     model = Category
     success_url = reverse_lazy("CategoryList")
     template_name = "blog/CategoryDelete.html"
-    
+
 #CBV-Contacto
 class ContactoListView(ListView):
     model = Contacto
@@ -227,29 +229,44 @@ class ContactoDeleteView(DeleteView):
 
 @login_required
 def editarPerfil(request):
-
     usuario = request.user
-
     if request.method == 'POST':
-
         miFormulario = UserEditForm(request.POST)
-
         if miFormulario.is_valid():
-
             informacion = miFormulario.cleaned_data
-
-            usuario.email = informacion['email']
-            usuario.password1 = informacion['password1']
-            usuario.password2 = informacion['password2']
-            usuario.last_name = informacion['last_name']
-            usuario.first_name = informacion['first_name']
-
-            usuario.save()
-
-            return render(request, "blog/inicio.html")
-
+            if informacion["password1"] != informacion["password2"]:
+                datos={
+                    'first_name': usuario.first_name,
+                    'email': usuario.email
+                }
+                miFormulario = UserEditForm(initial=datos)
+            else:
+                usuario.email = informacion['email']
+                if informacion["password1"]:
+                    usuario.set_password(informacion["password1"])
+                usuario.last_name = informacion['last_name']
+                usuario.first_name = informacion['first_name']
+                usuario.save()
+                
+                try:
+                    avatar = Avatar.objects.get(user=usuario)
+                except Avatar.DoesNotExist:
+                    avatar = Avatar(user=usuario, imagen=informacion['imagen'])
+                else:
+                    avatar.imagen= informacion['imagen']
+                    avatar.save()
+                return render(request, "blog/index.html")
     else:
-
-        miFormulario = UserEditForm(initial={'email': usuario.email})
+        datos={
+            
+                    'first_name': usuario.first_name,
+                    'email': usuario.email
+                }
+        miFormulario = UserEditForm(initial=datos)
 
     return render(request, "blog/usersProfile.html", {"miFormulario": miFormulario, "usuario": usuario})
+
+
+# Author
+def author(request):
+    return render(request, "blog/author_view.html")

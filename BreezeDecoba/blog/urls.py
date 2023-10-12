@@ -57,3 +57,8 @@ urlpatterns += [
 urlpatterns += [
     path('editarPerfil', views.editarPerfil, name="EditarPerfil"),     
 ]
+
+#URL Author
+urlpatterns += [
+    path('author', views.author, name="Author"),     
+]
