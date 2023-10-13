@@ -1,6 +1,5 @@
 from django.urls import path
 from blog import views
-from django.contrib.auth.views import LogoutView
 
 # URLS views
 urlpatterns = [
@@ -8,6 +7,7 @@ urlpatterns = [
     path('nosotros/', views.nosotros, name="nosotros"),
     path('productos/', views.productos, name="productos"),
     path('contacto/', views.contacto, name="contacto"),
+    path('author', views.author, name="Author"),
 ]
 
 
@@ -45,14 +45,4 @@ urlpatterns += [
     path("contacto/new/", views.ContactoCreateView.as_view(), name="ContactoNew"),
     path("contacto/edit/<int:pk>", views.ContactoUpdateView.as_view(), name="ContactoEdit"),
     path("contacto/delete/<int:pk>",views.ContactoDeleteView.as_view(),name="ContactoDelete",),
-]
-
-#URL Perfiles de Usuario
-urlpatterns += [
-    path('editarPerfil', views.editarPerfil, name="EditarPerfil"),     
-]
-
-#URL Author
-urlpatterns += [
-    path('author', views.author, name="Author"),     
 ]

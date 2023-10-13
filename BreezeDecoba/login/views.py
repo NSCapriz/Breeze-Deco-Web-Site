@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from blog.forms import UserEditForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
