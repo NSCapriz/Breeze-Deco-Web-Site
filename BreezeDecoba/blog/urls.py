@@ -10,11 +10,6 @@ urlpatterns = [
     path('contacto/', views.contacto, name="contacto"),
 ]
 
-#URLS Registro,Login, Logout
-urlpatterns += [
-    path('login/', views.login_request, name="login"),
-    path("logout",LogoutView.as_view(template_name="blog/logout.html"), name="Logout"),
-]
 
 #URLS CBV-Clientes
 urlpatterns += [

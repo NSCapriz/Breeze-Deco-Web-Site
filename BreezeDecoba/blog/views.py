@@ -83,27 +83,6 @@ def newsletter(request): #función a utilizar
         myForm = ClientForm()
     return render(request, "blog/register.html", {"myForm": myForm})
 
-# Función Login
-def login_request(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-
-        if form.is_valid():
-            usuario = form.cleaned_data.get('username')
-            clave = form.cleaned_data.get('password')
-            user = authenticate(username=usuario, password=clave)
-
-            if user is not None:
-                login(request, user)
-                return render(request,"blog/index.html",{"mensaje": f"Has iniciado sesión. Bienvenido {usuario}!"},)
-            else:
-                return render(request,"blog/index.html",{"mensaje": "Error, datos incorrectos"},)
-        else:
-            return render(request,"blog/index.html", {"mensaje": "Usuario o contraseña incorrectos, por favor vuelva a intentarlo"},)
-    form = AuthenticationForm()
-
-    return render(request, "blog/login.html", {"form": form})
-
 
 
 #CBV-Clientes
