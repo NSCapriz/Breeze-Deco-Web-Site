@@ -6,7 +6,7 @@ from blog.forms import ClientForm, ProductForm, CategoryForm, ContactoForm, Busq
 # Login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from blog.forms import UserRegisterForm, UserEditForm
+from blog.forms import UserEditForm
 from django.contrib.auth.decorators import login_required
 
 #CBV
@@ -18,9 +18,8 @@ from django.urls import reverse_lazy
 
 # Create your views here.
 
-def inicio(request):
-    #avatares = Avatar.objects.filter(user=request.user.id)[0]
-    return render(request, "blog/index.html")#,{"url": avatares}
+def inicio(request):   
+    return render(request, "blog/index.html")
 
 def nosotros(request):
     if request.method == 'POST':
@@ -105,20 +104,7 @@ def login_request(request):
 
     return render(request, "blog/login.html", {"form": form})
 
-# Función Registro
-def registro(request):
-    if request.method == "POST":
-        registerForm = UserRegisterForm(request.POST)
 
-        if registerForm.is_valid():
-            username = registerForm.cleaned_data["username"]
-            registerForm.save()
-            return render(request, "blog/index.html", {"mensaje": "Su usuario ha sido registrado correctamente, ahora puede iniciar sesión"})
-
-    else:
-        registerForm = UserRegisterForm()
-
-    return render(request, "blog/register.html", {"registerForm": registerForm})
 
 #CBV-Clientes
 class ClientListView(ListView):

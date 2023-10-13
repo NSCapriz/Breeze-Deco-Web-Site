@@ -12,7 +12,6 @@ urlpatterns = [
 
 #URLS Registro,Login, Logout
 urlpatterns += [
-    path('registro/', views.registro, name="registro"),
     path('login/', views.login_request, name="login"),
     path("logout",LogoutView.as_view(template_name="blog/logout.html"), name="Logout"),
 ]
