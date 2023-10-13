@@ -231,7 +231,7 @@ class ContactoDeleteView(DeleteView):
 def editarPerfil(request):
     usuario = request.user
     if request.method == 'POST':
-        miFormulario = UserEditForm(request.POST)
+        miFormulario = UserEditForm(request.POST, request.FILES)
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             if informacion["password1"] != informacion["password2"]:
@@ -252,16 +252,16 @@ def editarPerfil(request):
                     avatar = Avatar.objects.get(user=usuario)
                 except Avatar.DoesNotExist:
                     avatar = Avatar(user=usuario, imagen=informacion['imagen'])
+                    avatar.save()
                 else:
-                    avatar.imagen= informacion['imagen']
+                    avatar.imagen= informacion["imagen"]
                     avatar.save()
                 return render(request, "blog/index.html")
     else:
         datos={
-            
-                    'first_name': usuario.first_name,
-                    'email': usuario.email
-                }
+            'first_name': usuario.first_name,
+            'email': usuario.email
+        }
         miFormulario = UserEditForm(initial=datos)
 
     return render(request, "blog/usersProfile.html", {"miFormulario": miFormulario, "usuario": usuario})

@@ -36,7 +36,7 @@ class Contacto(models.Model):
     
 #Clase para colocar avatar
 class Avatar(models.Model):
-    user = models.OneToOneField(User, on_delete=models.deletion.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
 
