@@ -1,8 +1,22 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1>Detalles de la consulta seleccionada:</h1>
-
-<p>Consulta: <i>{{object.consult}}</i></p>
-<p>Realizada por: <i>{{object.user_name}}</i></p>
-<p>Email de contacto: <i>{{object.email}}</i></p>
-<a href="{% url 'ContactoList' %}">Regresar</a>
+<section class="container-fluid ">
+    <div class="row justify-content-center align-items-center my-5 py-5">
+        <div class="col-md-4 my-4 py-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center fs-4 fst-italic">Detalles</h1>
+                </div>
+                <div class="card-body">
+                    <p class="card-title text-center">Cliente:<strong> {{object.user_name}}</strong></p>
+                    <p class="card-text text-center  fst-italic"><strong>Consulta: </strong>{{object.consult}}</p>
+                    <p class="card-text text-center fst-italic">Email de contacto:</p>
+                    <p class="text-center fw-bolder">{{object.email}}</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center my-5">
+                <a href="{% url 'ContactoList' %}" class="btn btn-info text-white fw-bolder">Regresar</a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock main %}

@@ -1,16 +1,40 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1>LISTA DE PRODUCTOS:</h1>
-<ul>
-    {% for producto in object_list %}
-    <li>
-        <p>Producto: {{producto.name_product}} / {{producto.price}}</p>
-        <p>
-            <a href="{% url 'ProductDetails' producto.id %}" class="mx-2">Ver</a>
-            <a href="{% url 'ProductEdit' producto.id %}" class="me-2">Editar</a>
-            <a href="{% url 'ProductDelete' producto.id %}">Borrar</a>
-        </p>
-    </li>
-    {% endfor %}
-    <a href="{% url 'ProductNew' %}"><button class="btn  btn-success ">Agregar nuevo producto</button></a>
-</ul>
+<section class="container-fluid">
+    <div class="row justify-content-center align-items-center my-4 py-4">
+        <div class="col-md-5">
+            <h1 class="text-center">LISTA DE PRODUCTOS:</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center my-5">
+            <a href="{% url 'ProductNew' %}"><button class="btn  btn-success ">Agregar nuevo producto</button></a>
+        </div>
+            <ul class="list-group">
+                {% for producto in object_list %}
+                <div class="row  justify-content-center align-items-center my-2">
+                    <div class="col-md-4 px-5 my-3 text-center mt-2 mb-2">
+                        <li class="list-group-item">
+                            <div class="card">
+                                <p class="card-header">Producto</p>
+                                <div class="card-body">
+                                    {% if producto.img_product%}
+                                    <div class="container-fluid ">
+                                        <img src="{{producto.img_product.url}}" class="img-fluid" alt="" />
+                                    </div>
+                                    {% endif %}
+                                    <h2 class="card-title fs-4 ">{{producto.name_product}}</h2>
+                                    <p class="card-text fst-italic">$ {{producto.price}}</p>
+                                    <p>
+                                        <a href="{% url 'ProductDetails' producto.id %}" class="btn btn-primary mb-2">Más</a>
+                                        <a href="{% url 'ProductEdit' producto.id %}" class="btn btn-success mb-2">Editar</a>
+                                        <a href="{% url 'ProductDelete' producto.id %}" class="btn btn-danger mb-2">Borrar</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
 {% endblock main %}

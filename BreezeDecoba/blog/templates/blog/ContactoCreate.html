@@ -1,7 +1,23 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1>Si deseas agregar alguna consulta para verla a futuro, hazlo desde el siguiente formulario:</h1>
-<form action="" method="POST">
-    {% csrf_token %} {{form.as_p}}
-    <input type="submit" value="Enviar" />
-</form>
+<section class="container-fluid ">
+    <div class="row justify-content-center align-items-center my-5">
+        <div class="row justify-content-center  align-items-center ">
+            <h1 class="text-center">¿Deseas agregar algo nuevo?</h1>
+            <h2 class="text-center fw-light mt-5  mb-2 ">Hazlo desde el siguiente formulario:</h2>
+        </div>
+        <div class="col-md-6 my-5">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center ">Completar campos:</h3>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST" class="text-center">
+                        {% csrf_token %} {{form.as_p}}
+                        <input type="submit" class="btn btn-primary my-3" value="Enviar" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock main %}

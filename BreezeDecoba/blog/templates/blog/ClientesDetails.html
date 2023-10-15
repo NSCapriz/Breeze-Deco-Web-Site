@@ -1,9 +1,21 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1>Detalles del Cliente:</h1>
-
-<p>Nombre del cliente: <i>{{ object.name}}</i></p>
-<p>Apellido: <i>{{object.lastname}}</i></p>
-<p>Email: <i>{{object.email}}</i></p>
-<p>Email: <i>{{object.age}}</i></p>
-<a href="{% url 'ClientList' %}">Regresar</a>
+<section class="container-fluid ">
+    <div class="row justify-content-center align-items-center my-5 py-5">
+        <div class="col-md-4 my-4 py-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center fs-4 fst-italic">Detalles</h1>
+                </div>
+                <div class="card-body">
+                    <p class="card-title text-center">Cliente: <strong>{{ object.name}} {{object.lastname}}</strong></p>
+                    <p class="card-text text-center fst-italic"> <strong>Cumpleaños:</strong> {{object.age}}</p>
+                    <p class="card-text text-center"> <strong>Email:</strong> {{object.email}} </p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center my-5">
+                <a href="{% url 'ClientList' %}" class="btn btn-info text-white fw-bolder">Regresar</a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock main %}

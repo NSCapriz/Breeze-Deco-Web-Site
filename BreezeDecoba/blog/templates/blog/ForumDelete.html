@@ -5,14 +5,16 @@
             <h1 class="text-center text-bg-danger my-5 py-5 fst-italic rounded ">¿Estas seguro que deseas borrar esto?</h1>
             <form action="" method="POST" class="mt-5 pt-5">
                 {% csrf_token %}
-                <h2 class="text-center fw-lighter">Producto propuesto:</h2>
-                <h3 class="text-center my-3">{{ object.product }}</h3>
+                <h2 class="text-center">{{ object.title }}</h2>
+                <p class="text-center">{{object.content}}</p>
+                <p class="text-center">Fecha: {{object.date_create}}</p>
+                <p class="text-center">Autor: {{object.author_post}}</p>
                 <div class="d-flex justify-content-center align-items-center">
                     <input type="submit" class="btn btn-danger  my-3 py-3" value="Borrar" />
                 </div>
             </form>
             <div class="d-flex justify-content-center my-2 py-2 ">
-                <a href="{% url 'CategoryList' %}"><button class="btn btn-success">No deseo borrarlo</button></a>
+                <a href="{% url 'ForumList' %}"><button class="btn btn-success">No deseo borrarlo</button></a>
             </div>
         </div>
     </div>

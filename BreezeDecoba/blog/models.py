@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Client(models.Model):
@@ -9,14 +10,16 @@ class Client(models.Model):
     
     def __str__(self):
         return f"{self.name} {self.lastname}"
-    
+
 class Product(models.Model):
     name_product = models.CharField(max_length=20)
     description = models.CharField(max_length=100)
     price = models.IntegerField()
+    img_product = models.ImageField(upload_to='productos/', null=True, blank=True)
+    
     def __str__(self):
         return f"{self.name_product} ${self.price}"
-    
+
 class Category(models.Model):
     category = models.CharField(max_length=20)
     subcategory = models.CharField(max_length=20)
@@ -24,7 +27,7 @@ class Category(models.Model):
     
     def __str__(self):
         return f"{self.category} - {self.subcategory} ---> {self.product}"
-    
+
 class Contacto(models.Model):
     user_name = models.CharField(max_length=40)
     email = models.EmailField()
@@ -32,4 +35,12 @@ class Contacto(models.Model):
     
     def __str__(self):
         return f"{self.user_name} - {self.consult}"
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    date_create = models.DateTimeField(auto_now_add=True)
+    author_post = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     
+    def __str__(self):
+        return f"{self.title}"

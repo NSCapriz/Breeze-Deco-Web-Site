@@ -16,12 +16,10 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="row justify-content-center align-items-center text-center">
-                                <!--VER SI NO AFECTA PYTHON-->
                                 {{productoForm.as_div}}
                                 <input type="submit" value="Enviar" class="btn btn-success my-3" />
                             </div>
                         </form>
-                        <p class="text-danger ">{{mensaje}}</p>
                     </div>
                 </div>
             </div>

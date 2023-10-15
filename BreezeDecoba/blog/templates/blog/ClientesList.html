@@ -1,16 +1,35 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1>LISTA DE SUSCRIPCIÓN DE CLIENTES PARA NOVEDADES</h1>
-<ul>
-    {% for cliente in object_list %}
-    <li>
-        <p>Cliente: {{ cliente.name}} {{ cliente.lastname}}</p>
-        <p>
-            <a href="{% url 'ClientDetails' cliente.id %}" class="mx-2">Ver</a>
-            <a href="{% url 'ClienteEdit' cliente.id %}" class="me-2">Editar</a>
-            <a href="{% url 'ClientDelete' cliente.id %}">Borrar</a>
-        </p>
-    </li>
-    {% endfor %}
-    <a href="{% url 'ClienteNew' %}"><button class="btn  btn-success ">Agregar Cliente</button></a>
-</ul>
+<section class="container-fluid">
+    <div class="row justify-content-center align-items-center my-4 py-4">
+        <div class="col-md-5">
+            <h1 class="text-center">LISTA DE SUSCRIPCIÓN DE CLIENTES PARA NOVEDADES:</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center my-5">
+            <a href="{% url 'ClienteNew' %}"><button class="btn  btn-success ">Agregar Cliente</button></a>
+        </div>
+            <ul class="list-group">
+                {% for cliente in object_list %}
+                <div class="row  justify-content-center align-items-center my-2">
+                    <div class="col-md-10  px-5 my-3 text-center mt-2 mb-2">
+                        <li class="list-group-item">
+                            <div class="card">
+                                <p class="card-header">Cliente suscripto:</p>
+                                <div class="card-body">
+                                    <h2 class="card-title fs-4 ">{{ cliente.name}} {{ cliente.lastname}}</h2>
+                                    <p class="card-text fst-italic">Cumpleaños: {{ cliente.age}}</p>
+                                    <p>
+                                        <a href="{% url 'ClientDetails' cliente.id %}" class="btn btn-primary mb-2">Más</a>
+                                        <a href="{% url 'ClienteEdit' cliente.id %}" class="btn btn-success mb-2">Editar</a>
+                                        <a href="{% url 'ClientDelete' cliente.id %}" class="btn btn-danger mb-2">Borrar</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
 {% endblock main %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from blog.models import Client, Product, Category, Contacto
+from blog.models import Client, Product, Category, Contacto, Post
 from blog.forms import ClientForm, ProductForm, CategoryForm, ContactoForm, BusquedaProductForm
 
 # Login
@@ -47,7 +47,7 @@ def productos(request):
     
             return render(request, "blog/resultadobusqueda.html", {"productos": productos})
         else:
-            return render(request, "blog/productos.html", {"mensaje": "Lo sentimos, no contamos con ese producto."})
+            return render(request, "blog/productos.html")
     else:
         productoForm = BusquedaProductForm()
     return render(request, "blog/productos.html", {"productoForm": productoForm})
@@ -82,8 +82,18 @@ def newsletter(request): #función a utilizar
         myForm = ClientForm()
     return render(request, "blog/register.html", {"myForm": myForm})
 
+def foro(request):
+    posts = Post. objects.all()
+    context = {
+        "posts": posts
+    }
+    return render(request, "blog/forum.html", context=context)
+
 def author(request): # Author View
     return render(request, "blog/author_view.html")
+
+def administracion(request):
+    return render(request, "blog/administración.html")
 
 #CBV-Clientes
 class ClientListView(ListView):
@@ -125,13 +135,13 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = "blog/ProductosCreate.html"
     success_url = reverse_lazy("ProductList")
-    fields = ["name_product", "description", "price"]
+    fields = ["name_product", "description", "price", "img_product"]
 
 class ProductUpdateView(UpdateView):
     model = Product
     template_name = "blog/ProductosEdit.html"
     success_url = reverse_lazy("ProductList")
-    fields = ["name_product", "description", "price"]
+    fields = ["name_product", "description", "price", "img_product"]
 
 class ProductDeleteView(DeleteView):
     model = Product
@@ -189,4 +199,29 @@ class ContactoDeleteView(DeleteView):
     model = Contacto
     success_url = reverse_lazy("ContactoList")
     template_name = "blog/ContactoDelete.html"  
+
+#CBV - Foro
+class ForumListView(ListView):
+    model = Post
+    template_name = "blog/ForumList.html"
+class ForumDetailsView(DetailView):
+    model = Post
+    template_name = "blog/ForumDetails.html"
+
+class ForumCreateView(CreateView):
+    model = Post
+    template_name = "blog/ForumCreate.html"
+    success_url = reverse_lazy("ForumList")
+    fields = ["title", "content", "author_post"]
+
+class ForumUpdateView(UpdateView):
+    model = Post
+    template_name = "blog/ForumEdit.html"
+    success_url = reverse_lazy("ForumList")
+    fields = ["title", "content"]
+
+class ForumDeleteView(DeleteView):
+    model = Post
+    success_url = reverse_lazy("ForumList")
+    template_name = "blog/ForumDelete.html" 
 

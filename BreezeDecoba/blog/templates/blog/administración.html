@@ -1,0 +1,83 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<section class="container-fluid">
+    <div class="row justify-content-center align-items-center my-4 py-4">
+        <div class="col-md-5">
+            <h1 class="text-center ">Bienvenido al Sector de administración del sitio</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center mb-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-center">Administrar:</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title text-center ">Todos los productos:</h2>
+                    <p class="card-text">Desde aqui se pueden hacer modificaciones, ver detalles, editar o bien borrar los mismos.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{% url 'ProductList' %}" class="btn btn-primary">Hacer modificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-center">Administrar:</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title text-center ">Clientes registrados:</h2>
+                    <p class="card-text">Desde aqui se pueden hacer modificaciones, ver detalles, editar o bien borrar los mismos.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{% url 'ClientList' %}" class="btn btn-primary">Hacer modificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-center">Administrar:</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title text-center ">Consulta de Clientes:</h2>
+                    <p class="card-text">Desde aqui se pueden hacer modificaciones, ver detalles, editar o bien borrar las mismas</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{% url 'ContactoList' %}" class="btn btn-primary">Hacer modificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center  mb-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-center">Administrar:</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title text-center ">Propuestas Clientes:</h2>
+                    <p class="card-text">Desde aqui se pueden hacer modificaciones, ver detalles, editar o bien borrar las mismas</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{% url 'CategoryList' %}" class="btn btn-primary">Hacer modificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-center">Administrar:</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title text-center">FORO:</h2>
+                    <p class="card-text">Desde aqui se pueden hacer modificaciones, ver detalles, editar o bien borrar las mismas</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{% url 'ForumList' %}" class="btn btn-primary">Hacer modificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

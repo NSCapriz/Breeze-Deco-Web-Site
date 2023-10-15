@@ -2,25 +2,26 @@
 <section class="container-fluid">
     <div class="row justify-content-center align-items-center my-4 py-4">
         <div class="col-md-5">
-            <h1 class="text-center">LISTA DE PRODUCTOS PROPUESTOS POR CLIENTES:</h1>
+            <h1 class="text-center">LISTA DE POSTEOS:</h1>
         </div>
         <div class="d-flex justify-content-center align-items-center my-5">
-            <a href="{% url 'CategoryNew' %}"><button class="btn  btn-success ">Agregar idea / Propuesta nueva</button></a>
+            <a href="{% url 'ForumNew' %}"><button class="btn  btn-success ">Hacer posteo</button></a>
         </div>
             <ul class="list-group">
-                {% for categoria in object_list %}
+                {% for post in object_list %}
                 <div class="row  justify-content-center align-items-center my-2">
                     <div class="col-md-10  px-5 my-3 text-center mt-2 mb-2">
                         <li class="list-group-item">
                             <div class="card">
-                                <p class="card-header">Propuesta:</p>
+                                <p class="card-header">Post:</p>
                                 <div class="card-body">
-                                    <h2 class="card-title fs-4 ">{{categoria.category}}</h2>
-                                    <p class="card-text fst-italic">Producto: {{categoria.product}}</p>
+                                    <h2 class="card-title fs-4 ">{{post.title}}</h2>
+                                    <p class="card-text fst-italic">Hecho por: {{post.author_post}}</p>
+                                    <p class="card-text fst-italic">Fecha: {{post.date_create}}</p>
                                     <p>
-                                        <a href="{% url 'CategoryDetails' categoria.id %}" class="btn btn-primary mb-2">Más</a>
-                                        <a href="{% url 'CategoryEdit' categoria.id %}" class="btn btn-success mb-2">Editar</a>
-                                        <a href="{% url 'CategoryDelete' categoria.id %}" class="btn btn-danger mb-2">Borrar</a>
+                                        <a href="{% url 'ForumDetails' post.id %}" class="btn btn-primary mb-2">Más</a>
+                                        <a href="{% url 'ForumEdit' post.id %}" class="btn btn-success mb-2">Editar</a>
+                                        <a href="{% url 'ForumDelete' post.id %}" class="btn btn-danger mb-2">Borrar</a>
                                     </p>
                                 </div>
                             </div>

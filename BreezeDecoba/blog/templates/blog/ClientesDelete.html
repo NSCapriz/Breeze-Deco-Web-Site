@@ -1,7 +1,21 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<form action="" method="POST">
-    {% csrf_token %} ¿Estas seguro que deseas borrar el Cliente: "{{ object }}"?
-    <input type="submit" value="Borrar" />
-</form>
-<a href="{% url 'ClientList' %}">No deseo borrarlo</a>
+<section class="container">
+    <div class="row justify-content-center align-items-center my-4">
+        <div class="col-md-5">
+            <h1 class="text-center text-bg-danger my-5 py-5 fst-italic rounded ">¿Estas seguro que deseas borrar esto?</h1>
+            <form action="" method="POST" class="mt-5 pt-5">
+                {% csrf_token %}
+                <h2 class="text-center fw-lighter ">Cliente suscripto:</h2>
+                <h3 class="text-center mt-3">{{object.name}} {{object.lastname}}</h3>
+                <p class="text-center">{{object.email}}</p>
+                <div class="d-flex justify-content-center align-items-center">
+                    <input type="submit" class="btn btn-danger  my-3 py-3" value="Borrar" />
+                </div>
+            </form>
+            <div class="d-flex justify-content-center my-2 py-2 ">
+                <a href="{% url 'ClientList' %}"><button class="btn btn-success">No deseo borrarlo</button></a>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock main %}

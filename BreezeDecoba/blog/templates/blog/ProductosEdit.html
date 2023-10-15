@@ -1,13 +1,41 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1> Estos son los datos actuales del Producto:</h1>
-<p>Nombre del Producto: <i>{{object.name_product}}</i></p>
-<p>Descripción: <i>{{object.description}}</i></p>
-<p>Precio: <i>{{object.price}}</i></p>
-<a href="{% url 'ProductList' %}">Regresar</a>
-
-<h2>Si necesitas modificar algun dato del producto hazlo en el siguiente formulario:</h2>
-<form action="" method="POST">
-    {% csrf_token %} {{ form.as_p }}
-    <input type="submit" value="Enviar" />
-</form>
+<section class="container-fluid ">
+    <div class="row justify-content-center align-items-center my-5">
+        <h1 class="text-center fs-3 "> Estos son los datos actuales del Producto:</h1>
+    </div>
+    <div class="row justify-content-center align-items-center my-2">
+        <div class="col-md-6 my-2">
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-center ">Producto:</p>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p class="text-center fw-bolder "><i>{{object.name_product}}</i></p>
+                        <p class="text-center"><i>{{object.description}}</i></p>
+                        <footer><p class="text-center">$ {{object.price}}</p></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center my-3">
+            <a href="{% url 'ProductList' %}" class="btn btn-info text-white ">Regresar</a>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center my-3">
+        <div class="col-md-6 my-2">
+            <h2 class="text-center fs-3">Si necesitas modificar algun dato del producto hazlo en el siguiente formulario:</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 text-center">
+            <form action="" method="POST">
+                {% csrf_token %} {{ form.as_p }}
+                <div class="d-flex justify-content-center align-items-center my-5">
+                    <input type="submit" value="Enviar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock main %}

@@ -1,11 +1,11 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1> Estos son los datos actuales de la categoria propuesta por el Cliente:</h1>
-<p>Nombre de la categoria propuesta por el cliente: <i>{{object.category}}</i></p>
-<p>Subcategoria o tipo: <i>{{object.subcategory}}</i></p>
-<p>Producto propuesto: <i>{{object.product}}</i></p>
-<a href="{% url 'CategoryList' %}">Regresar</a>
+<h1> Posteo hecho:</h1>
+<p>titulo: <i>{{object.title}}</i></p>
+<p>Contenido: <i>{{object.content}}</i></p>
+<p>Autor: <i>{{object.author_post}}</i></p>
+<a href="{% url 'ForumList' %}">Regresar</a>
 
-<h2>Si necesitas modificar algun dato de la categoria propuesta por cliente hazlo en el siguiente formulario:</h2>
+<h2>Si necesitas modificar el posteo:</h2>
 <form action="" method="POST">
     {% csrf_token %} {{ form.as_p }}
     <input type="submit" value="Enviar" />

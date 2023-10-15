@@ -8,6 +8,8 @@ urlpatterns = [
     path('productos/', views.productos, name="productos"),
     path('contacto/', views.contacto, name="contacto"),
     path('author', views.author, name="Author"),
+    path('forum/', views.foro, name="foro"),
+    path('pages/administración', views.administracion, name="administración")
 ]
 
 
@@ -45,4 +47,14 @@ urlpatterns += [
     path("contacto/new/", views.ContactoCreateView.as_view(), name="ContactoNew"),
     path("contacto/edit/<int:pk>", views.ContactoUpdateView.as_view(), name="ContactoEdit"),
     path("contacto/delete/<int:pk>",views.ContactoDeleteView.as_view(),name="ContactoDelete",),
+]
+
+
+#URLS CBV-Foro
+urlpatterns += [
+    path("forum/list/", views.ForumListView.as_view(), name="ForumList"),
+    path("forum/details/<int:pk>", views.ForumDetailsView.as_view(), name="ForumDetails"),
+    path("forum/new/", views.ForumCreateView.as_view(), name="ForumNew"),
+    path("forum/edit/<int:pk>", views.ForumUpdateView.as_view(), name="ForumEdit"),
+    path("forum/delete/<int:pk>",views.ForumDeleteView.as_view(),name="ForumDelete",),
 ]

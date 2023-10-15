@@ -1,16 +1,36 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
-<h1>LISTA DE CONSULTAS REALIZADAS POR CLIENTES:</h1>
-<ul>
-    {% for consulta in object_list %}
-    <li>
-        <p>Consulta realizada por cliente: {{consulta.consult}} ---- Realizada por: {{consulta.user_name}}, su email de contacto: {{consulta.email}}</p>
-        <p>
-            <a href="{% url 'ContactoDetails' consulta.id %}" class="mx-2">Ver</a>
-            <a href="{% url 'ContactoEdit' consulta.id %}" class="me-2">Editar</a>
-            <a href="{% url 'ContactoDelete' consulta.id %}">Borrar</a>
-        </p>
-    </li>
-    {% endfor %}
-    <a href="{% url 'ContactoNew' %}"><button class="btn  btn-success ">Agregar nueva consulta</button></a>
-</ul>
+<section class="container-fluid">
+    <div class="row justify-content-center align-items-center my-4 py-4">
+        <div class="col-md-5">
+            <h1 class="text-center">LISTA DE CONSULTAS REALIZADAS POR CLIENTES:</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center my-5">
+            <a href="{% url 'ContactoNew' %}"><button class="btn  btn-success ">Agregar nueva consulta</button></a>
+        </div>
+            <ul class="list-group">
+                {% for consulta in object_list %}
+                <div class="row  justify-content-center align-items-center my-2">
+                    <div class="col-md-10  px-5 my-3 text-center mt-2 mb-2">
+                        <li class="list-group-item">
+                            <div class="card">
+                                <p class="card-header">Consulta:</p>
+                                <div class="card-body">
+                                    <h2 class="card-title fs-4 ">Cliente: {{consulta.user_name}}</h2>
+                                    <p class="card-text fst-italic">{{consulta.consult}}</p>
+                                    <p class="card-text">{{consulta.email}}</p>
+                                    <p>
+                                        <a href="{% url 'ContactoDetails' consulta.id %}" class="btn btn-primary mb-2">Más</a>
+                                        <a href="{% url 'ContactoEdit' consulta.id %}" class="btn btn-success mb-2">Editar</a>
+                                        <a href="{% url 'ContactoDelete' consulta.id %}" class="btn btn-danger mb-2">Borrar</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
 {% endblock main %}
