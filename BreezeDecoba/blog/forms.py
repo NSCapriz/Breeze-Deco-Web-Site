@@ -20,7 +20,7 @@ class CategoryForm(forms.Form):
 class ContactoForm(forms.Form):
     user_name = forms.CharField(label="Nombre")
     email = forms.EmailField(label="Correo electrónico")
-    consult = forms.CharField(label="Su consulta (Maximo 200 caracteres)")
+    consult = forms.CharField(label="Su consulta", widget=forms.Textarea)
 
 class BusquedaProductForm(forms.Form):
     name_product = forms.CharField(label="Búsqueda rápida")

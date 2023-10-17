@@ -1,0 +1,26 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<section class=" container-fluid ">
+    <div class="row justify-content-center align-items-center my-5 ">
+        <h1 class="text-center my-3 ">Gracias por Suscribirte a nuestras novedades!</h1>
+        <div class="col-md-4 my-3 ">
+            <div class="card text-bg-warning border-2 p-3 text-center">
+                <div class="card-header">
+                    <h3 class="text-center">Suscripciones</h3>
+                </div>
+                <div class="card-body">
+                    {% if myForm.errors %}
+                    <p style="color: red;"> Dato no valido, intente nuevamente</p>
+                    {% endif %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle"> {{newsletterForm.as_table}} </table>
+                            <input type="submit" value="Enviar" class="btn btn-dark" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

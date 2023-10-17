@@ -1,4 +1,4 @@
-{% extends "blog/padre.html" %} {% load static %} {% block main %}
+{% extends "blog/padre.html" %} {% load static %} {% block main %} {% if request.user.is_superuser %}
 <section class="container-fluid">
     <div class="row justify-content-center align-items-center my-4 py-4">
         <div class="col-md-5">
@@ -19,7 +19,6 @@
                                     <p class="card-text fst-italic">Cumpleaños: {{ cliente.age}}</p>
                                     <p>
                                         <a href="{% url 'ClientDetails' cliente.id %}" class="btn btn-primary mb-2">Más</a>
-                                        <a href="{% url 'ClienteEdit' cliente.id %}" class="btn btn-success mb-2">Editar</a>
                                         <a href="{% url 'ClientDelete' cliente.id %}" class="btn btn-danger mb-2">Borrar</a>
                                     </p>
                                 </div>
@@ -32,4 +31,4 @@
         </div>
     </div>
 </section>
-{% endblock main %}
+{% endif %}{% endblock main %}

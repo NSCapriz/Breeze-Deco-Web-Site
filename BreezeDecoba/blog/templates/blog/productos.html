@@ -1,7 +1,11 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
 <div class="container-fluid">
     <section class="my-5">
-        <h1 class="text-center fst-italic pt-3 text-white container__titulo py-5 rounded mb-5">~ Nuestros Productos ~</h1>
+        <h1 class="text-center fst-italic pt-3 text-white container__titulo py-5 rounded mb-5  ">~ Nuestros Productos ~</h1>
+        <div class="d-flex justify-content-center align-items-center my-3 mb-4  fw-bolder border-bottom border-top  border-dark">
+            <p class="text-center px-2 fs-5 pt-3 ">¿Querés recibir todas las novedades y promos especiales de nuestros productos?</p>
+            <a href="{% url 'suscripciones' %}"><button class="btn btn-warning pb-2 ">Suscribirme</button></a>
+        </div>
         <div class="row justify-content-center align-items-center px-5">
             <div class="col-md-5 border border-2 border-black rounded">
                 <h2 class="text-center fs-5 pt-3 border-bottom border-2 ">En estes espacio podrás encontrar todos nuestros productos por categorias</h2>

@@ -53,7 +53,7 @@
                                     <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar Sesión</a></li>
                                     <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
                                     <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="{% url 'administración' %}">Sector de Administración</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'administracion' %}">Sector de Administración</a></li>
                                 </ul>
                             </li>
                             {% else %}{% if user_avatar %}
@@ -64,7 +64,6 @@
                                 <ul class="dropdown-menu bg-light">
                                     <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar Sesión</a></li>
                                     <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
                                     <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
                                 </ul>
                             </li>

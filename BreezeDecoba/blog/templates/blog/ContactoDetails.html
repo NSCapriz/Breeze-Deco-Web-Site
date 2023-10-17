@@ -1,4 +1,4 @@
-{% extends "blog/padre.html" %} {% load static %} {% block main %}
+{% extends "blog/padre.html" %} {% load static %} {% block main %} {% if request.user.is_superuser %}
 <section class="container-fluid ">
     <div class="row justify-content-center align-items-center my-5 py-5">
         <div class="col-md-4 my-4 py-4">
@@ -11,6 +11,7 @@
                     <p class="card-text text-center  fst-italic"><strong>Consulta: </strong>{{object.consult}}</p>
                     <p class="card-text text-center fst-italic">Email de contacto:</p>
                     <p class="text-center fw-bolder">{{object.email}}</p>
+                    <p class="card-text text-center  fst-italic"><strong>Fecha: </strong>{{object.date_consult}}</p>
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center my-5">
@@ -19,4 +20,4 @@
         </div>
     </div>
 </section>
-{% endblock main %}
+{% endif %}{% endblock main %}

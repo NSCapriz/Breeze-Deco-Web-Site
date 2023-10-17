@@ -7,6 +7,7 @@ from blog.forms import ClientForm, ProductForm, CategoryForm, ContactoForm, Busq
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #CBV
 from django.views.generic import ListView
@@ -67,21 +68,22 @@ def contacto(request):
         contactForm = ContactoForm()
     return render(request, "blog/contacto.html",{"contactForm": contactForm})
 
-def newsletter(request): #función a utilizar
+def newsletter(request):
     if request.method == 'POST':
 
-        myForm = ClientForm(request.POST)
-        print(myForm)
+        newsletterForm = ClientForm(request.POST)
+        print(newsletterForm)
 
-        if myForm.is_valid():
-            information = myForm.cleaned_data
+        if newsletterForm.is_valid():
+            information = newsletterForm.cleaned_data
             client = Client(name=information['name'], lastname=information['lastname'], email=information['email'], age=information['age'])
             client.save()
             return render(request, "blog/index.html")
     else:
-        myForm = ClientForm()
-    return render(request, "blog/register.html", {"myForm": myForm})
+        newsletterForm = ClientForm()
+    return render(request, "blog/suscripciones.html", {"newsletterForm": newsletterForm})
 
+@login_required
 def foro(request):
     posts = Post. objects.all()
     context = {
@@ -92,135 +94,118 @@ def foro(request):
 def author(request): # Author View
     return render(request, "blog/author_view.html")
 
+@login_required
 def administracion(request):
     return render(request, "blog/administración.html")
 
 #CBV-Clientes
-class ClientListView(ListView):
+class ClientListView(LoginRequiredMixin, ListView):
     model = Client
     template_name = "blog/ClientesList.html"
 
-class ClientDetailsView(DetailView):
+class ClientDetailsView(LoginRequiredMixin, DetailView):
     model = Client
     template_name = "blog/ClientesDetails.html"
 
-class ClientCreateView(CreateView):
+class ClientCreateView(LoginRequiredMixin, CreateView):
     model = Client
     template_name = "blog/ClientesCreate.html"
     success_url = reverse_lazy("ClientList")
     fields = ["name", "lastname", "email", "age"]
 
-class ClientUpdateView(UpdateView):
-    model = Client
-    template_name = "blog/ClientesUpdate.html"
-    success_url = reverse_lazy("ClientList")
-    fields = ["name", "lastname", "email", "age"]
-
-class ClientDeleteView(DeleteView):
+class ClientDeleteView(LoginRequiredMixin, DeleteView):
     model = Client
     success_url = reverse_lazy("ClientList")
     template_name = "blog/ClientesDelete.html"
 
-
 #CBV-Productos
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = "blog/ProductosList.html"
 
-class ProductDetailsView(DetailView):
+class ProductDetailsView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = "blog/ProductosDetails.html"
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     template_name = "blog/ProductosCreate.html"
     success_url = reverse_lazy("ProductList")
     fields = ["name_product", "description", "price", "img_product"]
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     template_name = "blog/ProductosEdit.html"
     success_url = reverse_lazy("ProductList")
     fields = ["name_product", "description", "price", "img_product"]
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy("ProductList")
     template_name = "blog/ProductosDelete.html"
 
 #CBV-Categorias
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     template_name = "blog/CategoryList.html"
 
-class CategoryDetailsView(DetailView):
+class CategoryDetailsView(LoginRequiredMixin, DetailView):
     model = Category
     template_name = "blog/CategoryDetails.html"
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     template_name = "blog/CategoryCreate.html"
     success_url = reverse_lazy("CategoryList")
     fields = ["category", "subcategory", "product"]
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = Category
     template_name = "blog/CategoryEdit.html"
     success_url = reverse_lazy("CategoryList")
     fields = ["category", "subcategory", "product"]
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = Category
     success_url = reverse_lazy("CategoryList")
     template_name = "blog/CategoryDelete.html"
 
 #CBV-Contacto
-class ContactoListView(ListView):
+class ContactoListView(LoginRequiredMixin, ListView):
     model = Contacto
     template_name = "blog/ContactoList.html"
 
-class ContactoDetailsView(DetailView):
+class ContactoDetailsView(LoginRequiredMixin, DetailView):
     model = Contacto
     template_name = "blog/ContactoDetails.html"
 
-class ContactoCreateView(CreateView):
-    model = Contacto
-    template_name = "blog/ContactoCreate.html"
-    success_url = reverse_lazy("ContactoList")
-    fields = ["user_name", "email", "consult"]
-
-class ContactoUpdateView(UpdateView):
-    model = Contacto
-    template_name = "blog/ContactoEdit.html"
-    success_url = reverse_lazy("ContactoList")
-    fields = ["user_name", "email", "consult"]
-
-class ContactoDeleteView(DeleteView):
+class ContactoDeleteView(LoginRequiredMixin, DeleteView):
     model = Contacto
     success_url = reverse_lazy("ContactoList")
     template_name = "blog/ContactoDelete.html"  
 
 #CBV - Foro
-class ForumListView(ListView):
+class ForumListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "blog/ForumList.html"
-class ForumDetailsView(DetailView):
+
+class ForumDetailsView(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "blog/ForumDetails.html"
 
-class ForumCreateView(CreateView):
+class ForumCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = "blog/ForumCreate.html"
     success_url = reverse_lazy("ForumList")
     fields = ["title", "content", "author_post"]
 
-class ForumUpdateView(UpdateView):
+class ForumUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     template_name = "blog/ForumEdit.html"
     success_url = reverse_lazy("ForumList")
     fields = ["title", "content"]
 
-class ForumDeleteView(DeleteView):
+class ForumDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy("ForumList")
     template_name = "blog/ForumDelete.html" 

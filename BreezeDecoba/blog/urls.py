@@ -9,7 +9,8 @@ urlpatterns = [
     path('contacto/', views.contacto, name="contacto"),
     path('author', views.author, name="Author"),
     path('forum/', views.foro, name="foro"),
-    path('pages/administración', views.administracion, name="administración")
+    path('pages/administracion', views.administracion, name="administracion"),
+    path('pages/suscripciones', views.newsletter, name="suscripciones")
 ]
 
 
@@ -18,7 +19,6 @@ urlpatterns += [
     path("clientes/list/", views.ClientListView.as_view(), name="ClientList"),
     path("clientes/details/<int:pk>", views.ClientDetailsView.as_view(), name="ClientDetails"),
     path("clientes/new/", views.ClientCreateView.as_view(), name="ClienteNew"),
-    path("clientes/edit/<int:pk>", views.ClientUpdateView.as_view(), name="ClienteEdit"),
     path("clientes/delete/<int:pk>",views.ClientDeleteView.as_view(),name="ClientDelete",),
 ]
 
@@ -44,8 +44,6 @@ urlpatterns += [
 urlpatterns += [
     path("contacto/list/", views.ContactoListView.as_view(), name="ContactoList"),
     path("contacto/details/<int:pk>", views.ContactoDetailsView.as_view(), name="ContactoDetails"),
-    path("contacto/new/", views.ContactoCreateView.as_view(), name="ContactoNew"),
-    path("contacto/edit/<int:pk>", views.ContactoUpdateView.as_view(), name="ContactoEdit"),
     path("contacto/delete/<int:pk>",views.ContactoDeleteView.as_view(),name="ContactoDelete",),
 ]
 
