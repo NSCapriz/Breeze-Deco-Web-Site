@@ -1,4 +1,4 @@
-{% extends "blog/padre.html" %} {% load static %} {% block main %} {% if request.user.is_superuser %}
+{% extends "blog/padre.html" %} {% load static %} {% block title %} Breeze Deco | Administración {% endblock title %} {% block main %} {% if request.user.is_superuser %}
 <section class="container-fluid">
     <div class="row justify-content-center align-items-center my-4 py-4">
         <div class="col-md-5">

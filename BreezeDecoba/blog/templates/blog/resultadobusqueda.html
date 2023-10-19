@@ -1,24 +1,25 @@
 {% extends "blog/padre.html" %} {% load static %} {% block main %}
 <section class="container mt-5 mb-5">
     <div class="row justify-content-center align-items-center mt-5 mb-5">
+        <div class="d-flex justify-content-center align-items-center my-4 ">
+            <a href="{% url 'productos' %}"><button class="btn btn-success "> Hacer otra Busqueda</button></a>
+        </div>
+        <h1 class="text-center my-5">Los productos encontrados son:</h1>
         <ul class="list-group">
-            {% for producto in productos%} {% if producto in productos%}
+            {% for producto in productos%}
             <div class="col-md px-5 my-3 text-center mt-5 mb-5">
                 <div class="card">
                     <div class="card-body">
-                        {% if producto.img_product %}
-                        <img src="{{producto.img_product.url}}" alt="" />
-                        {% endif %}
                         <li class="list-group-item list-group-item-info">Producto: {{producto.name_product}}</li>
+                        {% if producto.img_product %}
+                        <img src="{{producto.img_product.url}}" alt="" class="img-fluid my-3" />
+                        {% endif %}
                         <p>Descripción: {{producto.description}}</p>
                         <p>Precio: ${{producto.price}}</p>
                     </div>
                 </div>
             </div>
-            {% else%}
-            <h1>Lo sentimos, al momento no contamos con ese producto.</h1>
-            <a href="{% url 'productos' %}"><button> Hacer otra Busqueda</button></a>
-            {% endif %} {% endfor %}
+            {% endfor %}
         </ul>
     </div>
 </section>

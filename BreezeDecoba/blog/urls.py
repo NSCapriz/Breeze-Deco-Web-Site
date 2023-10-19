@@ -10,7 +10,8 @@ urlpatterns = [
     path('author', views.author, name="Author"),
     path('forum/', views.foro, name="foro"),
     path('pages/administracion', views.administracion, name="administracion"),
-    path('pages/suscripciones', views.newsletter, name="suscripciones")
+    path('pages/suscripciones', views.newsletter, name="suscripciones"),
+    path('post/new', views.post_new, name='post_new'),
 ]
 
 

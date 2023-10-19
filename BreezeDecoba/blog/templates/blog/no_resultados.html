@@ -1,0 +1,14 @@
+{% extends "blog/padre.html" %} {% load static %} {% block main %}
+<section class="container mt-5 mb-5">
+    <div class="row justify-content-center align-items-center my-5">
+            <h1 class=" text-center my-5 py-5">{{context}}</h1>
+            <p class="text-center mb-5 fs-4">Si deseas sugerirnos que incorporemos algun producto nuevo, podrás hacerlo en el formulario que encontrarás al final de la sección nosotros</p>
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <a href="{% url 'nosotros' %}" class="text-center"><button class="btn btn-warning fw-semibold my-3">Ir a sugerir producto</button></a>
+            </div>
+            <p class="text-center mb-5 fs-4 ">Si deseas hacer otra busqueda, haz click en el siguiente botón:</p>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="{% url 'productos' %}"><button class="btn btn-success "> Hacer otra Busqueda</button></a>
+            </div>
+</section>
+{% endblock main %}

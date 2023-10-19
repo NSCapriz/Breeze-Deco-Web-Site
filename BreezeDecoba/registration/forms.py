@@ -10,5 +10,7 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        # Saca los mensajes de ayuda
+        labels = {
+            'username': 'Nombre',
+        }
         help_texts = {k:"" for k in fields}

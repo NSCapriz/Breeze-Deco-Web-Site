@@ -24,6 +24,7 @@ def login_request(request):
                 return render(request,"blog/index.html",{"mensaje": "Error, datos incorrectos"},)
         else:
             return render(request,"blog/index.html", {"mensaje": "Usuario o contraseña no válidos, por favor vuelva a intentarlo"},)
+            
     form = AuthenticationForm()
 
     return render(request, "login/login.html", {"form": form})

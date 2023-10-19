@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from blog.models import Client, Product, Category, Contacto, Post
-from blog.forms import ClientForm, ProductForm, CategoryForm, ContactoForm, BusquedaProductForm
+from django import forms
+from blog.forms import ClientForm, CategoryForm, ContactoForm, BusquedaProductForm, PostForm
+from django.utils import timezone
 
-# Login
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
+# Autenticacion
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -31,26 +30,30 @@ def nosotros(request):
             information = categoryForm.cleaned_data
             product = Category(product=information['product'], category=information['category'], subcategory=information['subcategory'])
             product.save()
-            return render(request, "blog/productos.html")
+            return redirect('productos')
     else:
         categoryForm = CategoryForm()
     return render(request, "blog/nosotros.html", {"categoryForm": categoryForm})
 
 def productos(request):
     if request.method == 'POST':
-
         productoForm = BusquedaProductForm(request.POST)
-        print(productoForm)
 
         if productoForm.is_valid():
             information = productoForm.cleaned_data
             productos = Product.objects.filter(name_product__icontains=information["name_product"])
     
-            return render(request, "blog/resultadobusqueda.html", {"productos": productos})
+            if productos:
+                return render(request, "blog/resultadobusqueda.html", {"productos": productos})
+            else:
+                context = "Lo sentimos, por el momento no contamos con ese producto."
+                return render(request, "blog/no_resultados.html", {"context": context})
         else:
-            return render(request, "blog/productos.html")
+            # Manejar errores de formulario, si es necesario
+            pass
     else:
         productoForm = BusquedaProductForm()
+    
     return render(request, "blog/productos.html", {"productoForm": productoForm})
 
 def contacto(request):
@@ -63,7 +66,7 @@ def contacto(request):
             information = contactForm.cleaned_data
             client = Contacto(user_name=information['user_name'], email=information['email'], consult=information['consult'])
             client.save()
-            return render(request, "blog/index.html")
+            return redirect('contacto')
     else:
         contactForm = ContactoForm()
     return render(request, "blog/contacto.html",{"contactForm": contactForm})
@@ -78,7 +81,7 @@ def newsletter(request):
             information = newsletterForm.cleaned_data
             client = Client(name=information['name'], lastname=information['lastname'], email=information['email'], age=information['age'])
             client.save()
-            return render(request, "blog/index.html")
+            return redirect('productos')
     else:
         newsletterForm = ClientForm()
     return render(request, "blog/suscripciones.html", {"newsletterForm": newsletterForm})
@@ -90,6 +93,20 @@ def foro(request):
         "posts": posts
     }
     return render(request, "blog/forum.html", context=context)
+
+@login_required
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author_post = request.user
+            post.date_create = timezone.now()
+            post.save()
+            return redirect('foro')
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
 
 def author(request): # Author View
     return render(request, "blog/author_view.html")
@@ -198,6 +215,10 @@ class ForumCreateView(LoginRequiredMixin, CreateView):
     template_name = "blog/ForumCreate.html"
     success_url = reverse_lazy("ForumList")
     fields = ["title", "content", "author_post"]
+    labels = {
+            'title': 'Título del Post',
+            'content': 'Mensaje',
+        }
 
 class ForumUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
