@@ -29,7 +29,8 @@
 	* Por su parte, los usuarios que se hayan registrado o decidan registrarse, podran logearse y editar sus datos personales, cambiar su contraseña o bien subir un avatar / foto de perfil, que los identifique. Asimismo, podrá acceder al apartado del foro de la página, donde podrán realizar publicaciones / posteos que deseen.
 	* El administrador general, cuenta además de las anteriores posibilidades, con la capacidad para poder administrar los datos de la BD, desde la misma página una vez que se encuentre logeado.
 
-
+* Dato:
+	* En la base de datos de prueba, se ha creado un super user -- **Usuario:** AdminGeneral **Password:** AdminPass123 
 
 * Autor del proyecto:
 	**Nicolás Capriz**
