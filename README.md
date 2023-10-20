@@ -22,7 +22,8 @@
 	- Se desarrollo un area de administración al que solo cuenta con acceso el admin general, a los fines de consultar datos particulares, crear, editar o borrar datos de la BD, desde la misma página.
 	- Se agregaron metodos __str__ a las clases a fin que en el area de administración propia del proyecto, se visualicen de mejor forma los objetos.
 
-
+* Video de Demostración:
+[Proyecto Breeze Deco - Muestra del sitio Web](https://www.youtube.com/watch?v=UNINHWBbtCU "Proyecto Breeze Deco - Muestra del sitio Web")
 
 * Funcionamiento para los usuarios:
 	* Los usuarios no registrados solo podrán acceder a las principales páginas del sitio web (Inicio, Nosotros, Productos y Contacto), contando con la posibilidad de registrarse, recomendar productos, buscar productos o bien realizar consultas.
