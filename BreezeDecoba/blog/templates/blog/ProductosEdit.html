@@ -1,4 +1,4 @@
-{% extends "blog/padre.html" %} {% load static %} {% block main %}{% if request.user.is_superuser %}
+{% extends "blog/base.html" %} {% load static %} {% block main %}{% if request.user.is_superuser %}
 <section class="container-fluid ">
     <div class="row justify-content-center align-items-center my-5">
         <h1 class="text-center fs-3 "> Estos son los datos actuales del Producto:</h1>

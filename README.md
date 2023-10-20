@@ -14,7 +14,7 @@
 
 * Funciones y aplicaciones:<br>
 	 *El presente proyecto cuenta con las aplicaciónes blog, login, register y profile, lo cual permiten modularizar las distintas funciones y componentes que componen el proyecto.*
-	- Cuenta con herencia de HTML a raíz del archivo padre.html .
+	- Cuenta con herencia de HTML a raíz del archivo base.html .
 	- Se establecieron clases en los archivos models de cada aplicación del proyecto.
 	- Se insertarón formularios en los arhivos HTML para insertar datos a las clases preestablecidas.
 	- Se insertó un formulario para  la busqueda de productos en la BD.
