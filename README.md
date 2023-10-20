@@ -37,4 +37,4 @@
 	**Nicolás Capriz**
 
 * Estado del proyecto:
-	**En proceso de desarrollo**. Se espera agregar mayores funcionalidades a futuro.
+	**En proceso de desarrollo**. Se espera agregar mayores funcionalidades a futuro (comentarios, like, dislike, etc).
