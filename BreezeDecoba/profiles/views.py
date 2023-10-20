@@ -1,10 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from profiles.models import  Avatar
 
 # Login
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout, authenticate
 from profiles.forms import UserEditForm
 from django.contrib.auth.decorators import login_required
 

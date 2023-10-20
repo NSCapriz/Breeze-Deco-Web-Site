@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from blog.models import Client, Product, Category, Contacto, Post
-from django import forms
 from blog.forms import ClientForm, CategoryForm, ContactoForm, BusquedaProductForm, PostForm
 from django.utils import timezone
 
@@ -106,7 +105,7 @@ def post_new(request):
             return redirect('foro')
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request, 'blog/post_new.html', {'form': form})
 
 def author(request): # Author View
     return render(request, "blog/author_view.html")
